@@ -25,7 +25,7 @@ namespace Tombola
                     if (i % 9 == 0)
                     {
                         Console.WriteLine();
-                    }
+                    } 
                 }
             }
         }
