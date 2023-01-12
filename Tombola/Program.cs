@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -10,11 +11,18 @@ namespace Tombola
     {
         static void Main(string[] args)
         {
-            //stampa tabellone al centro dello schermo
-            int x = Console.WindowWidth / 2;
-            int y = Console.WindowHeight / 2;
-            Console.SetCursorPosition(x, y);
+            
+            //stampa del tabellone 
             tabellone();
+            Console.WriteLine();
+            
+            //stampa della cartella del giocatore 1 e 2 
+            Console.WriteLine("Giocatore 1");
+            cartella();
+            Console.WriteLine();
+            Console.WriteLine("Giocatore 2");
+            cartella();
+
 
             //funzione creazione del tabellone tabellone 
             void tabellone()
@@ -25,9 +33,28 @@ namespace Tombola
                     if (i % 9 == 0)
                     {
                         Console.WriteLine();
-                    } 
+                    }
                 }
             }
+
+            //creazione e riempimento cartella 
+            void cartella ()
+            {
+                List<int> numeri = Enumerable.Range(1, 90).ToList();
+                Random rnd = new Random();
+
+                for (int i = 0; i < 3; i++)
+                {
+                    for (int j = 0; j < 5; j++)
+                    {
+                        int numeroCasuale = numeri[rnd.Next(numeri.Count)];
+                        Console.Write(numeroCasuale + " ");
+                        numeri.Remove(numeroCasuale);
+                    }
+                    Console.WriteLine();
+                }
+            }
+
         }
     }
 }
